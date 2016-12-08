@@ -3,7 +3,7 @@ var http = require('http');
 const fs = require('fs')
 
 cypherfunk.set({port:20000})
-cypherfunk.auth('Cypherfunkrpc', '3LtYSz3zb7nErtWEPKzAA2vhEAjutqQMrFo3uRFU9Mfh')
+cypherfunk.auth('', '')
 cypherfunk.exec('listtransactions', 'votepage', 10000000,  function(err, trans) {
 let totalYes = 0, totalNo = 0, totalAll = 0
 let yesVotes = 0, noVotes = 0, totalVotes = 0
