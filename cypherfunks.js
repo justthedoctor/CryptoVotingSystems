@@ -34,7 +34,7 @@ trans.forEach((ob, i, arr) => {
       <center><img src="https://chainz.cryptoid.info/logo/funk.png"></center>
 <b><br><center>Experimenting with Cypherfunk voting, for our first vote we would like to know your vote on using Cypherfunk to vote for our community decisions. <br>
         Count updated every 15m<br>
-	Last Update: ${moment().format('MMMM Do YYYY, h:mm a')}<br>
+	Last Update: ${moment().format('MMMM Do YYYY, h:mm a')} UTC<br>
       Please cast your Vote by simply sending some Cypherfunk to either the Yes or No Cypherfunk address provided</center>
       
       <br><center>Does Voting with your Cypherfunk seem like a good idea?
@@ -74,6 +74,7 @@ trans.forEach((ob, i, arr) => {
       </table>
 
       <b><center>All Cypherfunk used to vote are added as donations to our <a href="http://cryptodepot.org/faucet/cypherfunk">Cypherfunk Faucet</a>.<br>
+	  <a href="https://github.com/justthedoctor/CryptoVotingSystems">Github</a> Link.
 	</center></b>
         `
     fs.writeFile("/var/www/html/vpagetest/funk.html", html, function(err) {

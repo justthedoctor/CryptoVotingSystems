@@ -35,7 +35,7 @@ trans.forEach((ob, i, arr) => {
 
       <b><br><center>Experimenting with Pandacoin voting, for our first vote we would like to know your vote on using Pandacoin to vote for our community decisions. <br>
 	Count updated every 15m<br>
-Last Update: ${moment().format('MMMM Do YYYY, h:mm a')}<br>
+Last Update: ${moment().format('MMMM Do YYYY, h:mm a')} UTC<br>
       Please cast your Vote by simply sending some Pandacoin to either the Yes or No Pandacoin address provided</center>
       <!-- <body background="http://1.bp.blogspot.com/-9kxoNbnHLtM/UtJse9ERdUI/AAAAAAAAGdA/bfZmuiS7IR8/s1600/Green-bamboo-pattern-design-texture-template-HD-download.jpg" text="#fff"> -->
       <body background="http://data.whicdn.com/images/62101990/large.png" text="#000">
@@ -74,7 +74,9 @@ Last Update: ${moment().format('MMMM Do YYYY, h:mm a')}<br>
         </tr>
 
       </table>
-      <b><center>All Digital Pandacoin used to vote are added as donations to our <a href="http://cryptodepot.org/faucet/pandacoin">Pandacoin Faucet</a>.</center></b>
+      <b><center>All Digital Pandacoin used to vote are added as donations to our <a href="http://cryptodepot.org/faucet/pandacoin">Pandacoin Faucet</a>.<br.
+	  <a href="https://github.com/justthedoctor/CryptoVotingSystems">Github</a> Link.
+	  </center></b>
 	`
     fs.writeFile("/var/www/html/vpagetest/index.html", html, function(err) {
       if(err) {

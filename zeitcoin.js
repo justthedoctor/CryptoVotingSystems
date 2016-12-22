@@ -34,7 +34,7 @@ trans.forEach((ob, i, arr) => {
       <center><img src="http://cryptodepot.org/zeit.png"></center>
 <b><br><center>Experimenting with Zeitcoin voting, for our first vote we would like to know your vote on using Zeitcoin to vote for our community decisions. <br>
         Count updated every 15m<br>
-Last Update: ${moment().format('MMMM Do YYYY, h:mm a')}<br>
+Last Update: ${moment().format('MMMM Do YYYY, h:mm a')} UTC<br>
       Please cast your Vote by simply sending some Zeitcoin to either the Yes or No Zeitcoin address provided</center>
       
       <br><center>Does Voting with your Zeitcoin seem like a good idea?
@@ -72,7 +72,9 @@ Last Update: ${moment().format('MMMM Do YYYY, h:mm a')}<br>
         </tr>
       </table>
 
-      <b><center>All Zeitcoin used to vote are added as donations to our <a href="http://cryptodepot.org/faucet/zeitcoin">Zeitcoin Faucet</a>.</center></b>
+      <b><center>All Zeitcoin used to vote are added as donations to our <a href="http://cryptodepot.org/faucet/zeitcoin">Zeitcoin Faucet</a>.<br>
+		<a href="https://github.com/justthedoctor/CryptoVotingSystems">Github</a> Link.
+	  </center></b>
         `
     fs.writeFile("/var/www/html/vpagetest/zeit.html", html, function(err) {
       if(err) {
