@@ -1,4 +1,5 @@
 var cypherfunk = require('node-pandacoin') ()
+var moment = require('moment')
 var http = require('http');
 const fs = require('fs')
 
@@ -31,8 +32,9 @@ trans.forEach((ob, i, arr) => {
       <body text="#000">
 	  <title>Cypherfunk Voting System</title>
       <center><img src="https://chainz.cryptoid.info/logo/funk.png"></center>
-<b><br><center>Experimenting with Cypherfunk voting, for our first vote we would like to know your vote on using Cypherfunk to vote for our community decisions going forward. <br>
+<b><br><center>Experimenting with Cypherfunk voting, for our first vote we would like to know your vote on using Cypherfunk to vote for our community decisions. <br>
         Count updated every 15m<br>
+	Last Update: ${moment().format('MMMM Do YYYY, h:mm a')}<br>
       Please cast your Vote by simply sending some Cypherfunk to either the Yes or No Cypherfunk address provided</center>
       
       <br><center>Does Voting with your Cypherfunk seem like a good idea?
@@ -44,14 +46,16 @@ trans.forEach((ob, i, arr) => {
           <th>Received Address </th>
           <th>Transaction HASH</th>
           <th>Amount Sent</th>
+	  <th>Time Received</th>
         </tr>
         ${
                         trans.map(
-                                cv => `
+                               cv => `
                 <tr>
                   <td class="tg-yw4l">${cv.address}</td>
                   <td class="tg-6k2t"><a href="https://chainz.cryptoid.info/funk/tx.dws?${cv.txid}">${cv.txid}</a></td>
                   <td class="tg-yw4l">${cv.amount} FUNK</td>
+		  <td clasd="tg-yw41">${moment(cv.timereceived * 1000).format('MMMM Do YYYY, h:mm a')}</td>
                 </tr>
                 `
                         ).join('\n')
@@ -64,11 +68,13 @@ trans.forEach((ob, i, arr) => {
           <th><b><center>Total Votes: ${totalVotes}</b></center></th>
           <th><a href="https://chainz.cryptoid.info/funk/address.dws?CULBk98uprkEKyEJNKwg9TQbdsQqah7jDH.htm">CULBk98uprkEKyEJNKwg9TQbdsQqah7jDH</a> <br> Votes No: ${noVotes} <br>
       <center>Total FUNK ${totalNo} </center></th>
+	  <th> </th>
         </tr>
 
       </table>
 
-      <b><center>All Cypherfunk used to vote are added as donations to our <a href="http://cryptodepot.org/faucet/cypherfunk">Cypherfunk Faucet</a>.</center></b>
+      <b><center>All Cypherfunk used to vote are added as donations to our <a href="http://cryptodepot.org/faucet/cypherfunk">Cypherfunk Faucet</a>.<br>
+	</center></b>
         `
     fs.writeFile("/var/www/html/vpagetest/funk.html", html, function(err) {
       if(err) {

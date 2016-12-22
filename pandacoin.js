@@ -1,4 +1,5 @@
 var pandacoin = require('node-pandacoin') ()
+var moment = require('moment')
 var http = require('http');
 const fs = require('fs')
 
@@ -32,8 +33,9 @@ trans.forEach((ob, i, arr) => {
       <title>Pandacoin Voting</title>
       <center><img src="http://i61.tinypic.com/161gq6g.jpg"></center>
 
-      <b><br><center>Experimenting with Pandacoin voting, for our first vote we would like to know your vote on using Pandacoin to vote for our community decisions going forward. <br>
+      <b><br><center>Experimenting with Pandacoin voting, for our first vote we would like to know your vote on using Pandacoin to vote for our community decisions. <br>
 	Count updated every 15m<br>
+Last Update: ${moment().format('MMMM Do YYYY, h:mm a')}<br>
       Please cast your Vote by simply sending some Pandacoin to either the Yes or No Pandacoin address provided</center>
       <!-- <body background="http://1.bp.blogspot.com/-9kxoNbnHLtM/UtJse9ERdUI/AAAAAAAAGdA/bfZmuiS7IR8/s1600/Green-bamboo-pattern-design-texture-template-HD-download.jpg" text="#fff"> -->
       <body background="http://data.whicdn.com/images/62101990/large.png" text="#000">
@@ -46,6 +48,7 @@ trans.forEach((ob, i, arr) => {
           <th>Received Address </th>
           <th>Transaction HASH</th>
           <th>Amount Sent</th>
+	  <th>Date & Time</th>
         </tr>
         ${
 			trans.map(
@@ -54,6 +57,7 @@ trans.forEach((ob, i, arr) => {
                   <td class="tg-yw4l">${cv.address}</td>
                   <td class="tg-6k2t"><a href="https://chainz.cryptoid.info/pnd/tx.dws?${cv.txid}">${cv.txid}</a></td>
                   <td class="tg-yw4l">${cv.amount} PND</td>
+                  <td clasd="tg-yw41">${moment(cv.timereceived * 1000).format('MMMM Do YYYY, h:mm a')}</td>
                 </tr>
                 `
 			).join('\n')
@@ -66,6 +70,7 @@ trans.forEach((ob, i, arr) => {
           <th><b><center>Total Votes: ${totalVotes}</b></center></th>
           <th><a href="https://chainz.cryptoid.info/pnd/address.dws?PM25vrPjAVj9bnoYFHBADQKBvAAUcmwCSm.htm">PM25vrPjAVj9bnoYFHBADQKBvAAUcmwCSm</a> Votes No: ${noVotes} <br>
       <center>Total PND ${totalNo} </center></th>
+	<th> </th>
         </tr>
 
       </table>

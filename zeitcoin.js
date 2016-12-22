@@ -1,4 +1,5 @@
 var zeitcoin = require('node-pandacoin') ()
+var moment = require('moment')
 var http = require('http');
 const fs = require('fs')
 
@@ -31,8 +32,9 @@ trans.forEach((ob, i, arr) => {
       <body text="#000">
 	  <title>Zeitcoin Voting System</title>
       <center><img src="http://cryptodepot.org/zeit.png"></center>
-<b><br><center>Experimenting with Zeitcoin voting, for our first vote we would like to know your vote on using Zeitcoin to vote for our community decisions going forward. <br>
+<b><br><center>Experimenting with Zeitcoin voting, for our first vote we would like to know your vote on using Zeitcoin to vote for our community decisions. <br>
         Count updated every 15m<br>
+Last Update: ${moment().format('MMMM Do YYYY, h:mm a')}<br>
       Please cast your Vote by simply sending some Zeitcoin to either the Yes or No Zeitcoin address provided</center>
       
       <br><center>Does Voting with your Zeitcoin seem like a good idea?
@@ -44,6 +46,7 @@ trans.forEach((ob, i, arr) => {
           <th>Received Address </th>
           <th>Transaction HASH</th>
           <th>Amount Sent</th>
+	  <th>Date & Time</th>
         </tr>
         ${
                         trans.map(
@@ -52,6 +55,7 @@ trans.forEach((ob, i, arr) => {
                   <td class="tg-yw4l">${cv.address}</td>
                   <td class="tg-6k2t"><a href="https://chainz.cryptoid.info/zeit/tx.dws?${cv.txid}">${cv.txid}</a></td>
                   <td class="tg-yw4l">${cv.amount} ZEIT</td>
+                  <td clasd="tg-yw41">${moment(cv.timereceived * 1000).format('MMMM Do YYYY, h:mm a')}</td>
                 </tr>
                 `
                         ).join('\n')
@@ -64,13 +68,13 @@ trans.forEach((ob, i, arr) => {
           <th><b><center>Total Votes: ${totalVotes}</b></center></th>
           <th><a href="https://chainz.cryptoid.info/zeit/address.dws?Mov1vc9xSA4AZUWqQW1kHf6URUimd2tat6.htm">Mov1vc9xSA4AZUWqQW1kHf6URUimd2tat6</a> <br> Votes No: ${noVotes} <br>
       <center>Total ZEIT ${totalNo} </center></th>
+	<th>	</th>
         </tr>
-
       </table>
 
       <b><center>All Zeitcoin used to vote are added as donations to our <a href="http://cryptodepot.org/faucet/zeitcoin">Zeitcoin Faucet</a>.</center></b>
         `
-    fs.writeFile("/zeit.html", html, function(err) {
+    fs.writeFile("/var/www/html/vpagetest/zeit.html", html, function(err) {
       if(err) {
           return console.log(err);
       }
