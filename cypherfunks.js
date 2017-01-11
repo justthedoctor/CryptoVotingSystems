@@ -46,16 +46,14 @@ trans.forEach((ob, i, arr) => {
           <th>Received Address </th>
           <th>Transaction HASH</th>
           <th>Amount Sent</th>
-	  <th>Time Received</th>
         </tr>
         ${
                         trans.map(
                                cv => `
                 <tr>
-                  <td class="tg-yw4l">${cv.address}</td>
-                  <td class="tg-6k2t"><a href="https://chainz.cryptoid.info/funk/tx.dws?${cv.txid}">${cv.txid}</a></td>
-                  <td class="tg-yw4l">${cv.amount} FUNK</td>
-		  <td clasd="tg-yw41">${moment(cv.timereceived * 1000).format('MMMM Do YYYY, h:mm a')}</td>
+                  <td class="tg-yw4l"><a href="https://chainz.cryptoid.info/funk/address.dws?${cv.address}">${cv.address}</a></td>
+                  <td class="tg-6k2t" width="60%"><a href="https://chainz.cryptoid.info/funk/tx.dws?${cv.txid}">${cv.txid}</a></td>
+                  <td class="tg-yw4l" width="12%">${cv.amount} FUNK</td>
                 </tr>
                 `
                         ).join('\n')
@@ -68,7 +66,6 @@ trans.forEach((ob, i, arr) => {
           <th><b><center>Total Votes: ${totalVotes}</b></center></th>
           <th><a href="https://chainz.cryptoid.info/funk/address.dws?CULBk98uprkEKyEJNKwg9TQbdsQqah7jDH.htm">CULBk98uprkEKyEJNKwg9TQbdsQqah7jDH</a> <br> Votes No: ${noVotes} <br>
       <center>Total FUNK ${totalNo} </center></th>
-	  <th> </th>
         </tr>
 
       </table>

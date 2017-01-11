@@ -46,16 +46,14 @@ Last Update: ${moment().format('MMMM Do YYYY, h:mm a')} UTC<br>
           <th>Received Address </th>
           <th>Transaction HASH</th>
           <th>Amount Sent</th>
-	  <th>Date & Time</th>
         </tr>
         ${
                         trans.map(
                                 cv => `
                 <tr>
-                  <td class="tg-yw4l">${cv.address}</td>
-                  <td class="tg-6k2t"><a href="https://chainz.cryptoid.info/zeit/tx.dws?${cv.txid}">${cv.txid}</a></td>
-                  <td class="tg-yw4l">${cv.amount} ZEIT</td>
-                  <td clasd="tg-yw41">${moment(cv.timereceived * 1000).format('MMMM Do YYYY, h:mm a')}</td>
+                  <td class="tg-yw4l"><a href="https://chainz.cryptoid.info/zeit/address.dws?${cv.address}">${cv.address}</a></td>
+                  <td class="tg-6k2t" width="50%"><a href="https://chainz.cryptoid.info/zeit/tx.dws?${cv.txid}">${cv.txid}</a></td>
+                  <td class="tg-yw4l" width="12%">${cv.amount} ZEIT</td>
                 </tr>
                 `
                         ).join('\n')
@@ -68,7 +66,6 @@ Last Update: ${moment().format('MMMM Do YYYY, h:mm a')} UTC<br>
           <th><b><center>Total Votes: ${totalVotes}</b></center></th>
           <th><a href="https://chainz.cryptoid.info/zeit/address.dws?Mov1vc9xSA4AZUWqQW1kHf6URUimd2tat6.htm">Mov1vc9xSA4AZUWqQW1kHf6URUimd2tat6</a> <br> Votes No: ${noVotes} <br>
       <center>Total ZEIT ${totalNo} </center></th>
-	<th>	</th>
         </tr>
       </table>
 

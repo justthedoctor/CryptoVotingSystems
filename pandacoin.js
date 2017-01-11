@@ -23,11 +23,11 @@ trans.forEach((ob, i, arr) => {
 
 	let html = `
        <style type="text/css">
-        .tg  {border-collapse:collapse;border-spacing:0;border-color:#999;margin:0px auto;}
-        .tg td{font-family:Arial, sans-serif;font-size:14px;padding:10px 5px;border-style:solid;border-width:0px;overflow:hidden;word-break:normal;border-color:#999;color:#444;background-color:#F7FDFA;border-top-width:1px;border-bottom-width:1px;}
+        .tg  {border-collapse:collapse;border-spacing:0;border-color:#999;margin:0px auto;word-break: break-word;}
+        .tg td{overflow:hidden;font-family:Arial, sans-serif;font-size:14px;border-style:solid;border-width:0px;word-break:normal;border-color:#999;color:#444;background-color:#F7FDFA;border-top-width:1px;border-bottom-width:1px;}
         .tg th{font-family:Arial, sans-serif;font-size:14px;font-weight:normal;padding:10px 5px;border-style:solid;border-width:0px;overflow:hidden;word-break:normal;border-color:#999;color:#000;background-color:#FFBF00;border-top-width:1px;border-bottom-width:1px;}
         .tg .tg-0ord{text-align:right}
-        .tg .tg-yw4l{vertical-align:top}
+        .tg .tg-yw4l{vertical-align:top; text-align:center;}
         .tg .tg-6k2t{background-color:#F3F781;vertical-align:top}
       </style>
       <title>Pandacoin Voting</title>
@@ -48,16 +48,14 @@ Last Update: ${moment().format('MMMM Do YYYY, h:mm a')} UTC<br>
           <th>Received Address </th>
           <th>Transaction HASH</th>
           <th>Amount Sent</th>
-	  <th>Date & Time</th>
         </tr>
         ${
 			trans.map(
 			 	cv => `
                 <tr>
-                  <td class="tg-yw4l">${cv.address}</td>
-                  <td class="tg-6k2t"><a href="https://chainz.cryptoid.info/pnd/tx.dws?${cv.txid}">${cv.txid}</a></td>
-                  <td class="tg-yw4l">${cv.amount} PND</td>
-                  <td clasd="tg-yw41">${moment(cv.timereceived * 1000).format('MMMM Do YYYY, h:mm a')}</td>
+                  <td class="tg-yw4l"><a href="https://chainz.cryptoid.info/pnd/address.dws?${cv.address}">${cv.address}</a></td>
+                  <td class="tg-6k2t" width="60%"><a href="https://chainz.cryptoid.info/pnd/tx.dws?${cv.txid}">${cv.txid}</a></td>
+                  <td class="tg-yw4l" width="12%">${cv.amount} PND</td>
                 </tr>
                 `
 			).join('\n')
@@ -70,11 +68,10 @@ Last Update: ${moment().format('MMMM Do YYYY, h:mm a')} UTC<br>
           <th><b><center>Total Votes: ${totalVotes}</b></center></th>
           <th><a href="https://chainz.cryptoid.info/pnd/address.dws?PM25vrPjAVj9bnoYFHBADQKBvAAUcmwCSm.htm">PM25vrPjAVj9bnoYFHBADQKBvAAUcmwCSm</a> Votes No: ${noVotes} <br>
       <center>Total PND ${totalNo} </center></th>
-	<th> </th>
         </tr>
 
       </table>
-      <b><center>All Digital Pandacoin used to vote are added as donations to our <a href="http://cryptodepot.org/faucet/pandacoin">Pandacoin Faucet</a>.<br.
+      <b><center>All Digital Pandacoin used to vote are added as donations to our <a href="http://cryptodepot.org/faucet/pandacoin">Pandacoin Faucet</a>.<br>
 	  <a href="https://github.com/justthedoctor/CryptoVotingSystems">Github</a> Link.
 	  </center></b>
 	`
